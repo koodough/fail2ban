@@ -18,21 +18,23 @@
 #
 
 # epel repository is needed for the fail2ban package on rhel
-if platform_family?("rhel")
-  include_recipe "yum::epel"
-end
 
-if platform?("gentoo")
+case node['platform_family']
+                                     when "rhel", "fedora"
+                                       include_recipe "yum::epel"
+                                     when "gentoo"
+                                       include_recipe "gentoo::portage"
+                      
+                                     else
+                                       
+                                     end
 
-package "net-analyzer/fail2ban"
 
-else
 
 package "fail2ban" do
   action :upgrade
 end
 
-end
 
 %w{ fail2ban jail }.each do |cfg|
   template "/etc/fail2ban/#{cfg}.conf" do
