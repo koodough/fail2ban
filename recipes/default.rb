@@ -22,8 +22,16 @@ if platform_family?("rhel")
   include_recipe "yum::epel"
 end
 
+if platform?("gentoo")
+  package "net-analyzer/fail2ban"
+end
+
+else
+
 package "fail2ban" do
   action :upgrade
+end
+
 end
 
 %w{ fail2ban jail }.each do |cfg|
