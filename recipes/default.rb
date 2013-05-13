@@ -23,8 +23,8 @@ if platform_family?("rhel")
 end
 
 if platform?("gentoo")
-  package "net-analyzer/fail2ban"
-end
+
+package "net-analyzer/fail2ban"
 
 else
 
