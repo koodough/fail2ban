@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 #
 # Cookbook Name:: fail2ban
 # Recipe:: default
