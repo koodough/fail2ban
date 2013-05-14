@@ -20,14 +20,12 @@
 # epel repository is needed for the fail2ban package on rhel
 
 case node['platform_family']
-                                     when "rhel", "fedora"
-                                       include_recipe "yum::epel"
-                                     when "gentoo"
-                                       include_recipe "gentoo::portage"
-                      
-                                     else
-                                       
-                                     end
+          when "rhel", "fedora"
+          include_recipe "yum::epel"
+          when "gentoo"
+          #include_recipe "gentoo::portage"
+          else
+end
 
 
 
